@@ -25,6 +25,28 @@ public class Utils {
         return keys;
     }
 
+    // validate input data generically :))
+    public static <T> boolean isValid(T input, T key) {
+        if (key == null) {
+            return false;
+        } else if (key instanceof Integer) {
+            if (((Integer) key).intValue() == 0) {
+                return false;
+            }
+        }
+
+
+        if (input instanceof String) {
+            String inputString = (String) input;
+            return !(inputString.isEmpty());
+        } else if (input instanceof int[]) {
+            int[] inputArray = (int[]) input;
+            return inputArray.length > 0;
+        }
+
+        return false;
+    }
+
 
     // Generate all possible keys
     public static void generateKeysHelper(String prefix, int length, char[] chars, List<String> keys) {

@@ -1,7 +1,5 @@
 package encryption;
-
 import utils.Utils;
-
 import java.util.*;
 import java.util.stream.IntStream;
 
@@ -12,7 +10,12 @@ public class Encrypt {
     }
 
     // Encryption function with a text and a key
-    public static int[] xorEncrypt(String inputString, String key) {
+    public static int[] xorEncrypt(String inputString, String key) throws NullPointerException {
+        // validate data:
+        if (!Utils.isValid(inputString, key)) {
+            return new int[]{-1};
+        }
+
         int keyLen = key.length();
         return IntStream.range(0, inputString.length())
                 .map(i -> Utils.getAsciiFromChar(inputString, i) ^ Utils.getAsciiFromChar(key, (i % keyLen)))
@@ -21,7 +24,12 @@ public class Encrypt {
 
 
     // This method decrypt array of numbers and a key to a text
-    public static String xorDecrypt(int[] intputData, String key) {
+    public static String xorDecrypt(int[] intputData, String key) throws NullPointerException {
+        // validate data:
+        if (!Utils.isValid(intputData, key)) {
+            return "-1";
+        }
+
         int keyLen = key.length();
         return IntStream.range(0, intputData.length)
                 .mapToObj(i -> (char) (intputData[i] ^ Utils.getAsciiFromChar(key, i % keyLen)))
@@ -30,11 +38,13 @@ public class Encrypt {
     }
 
 
-
-
-
     // Decrypt integer array data based on the key length...
-    public static String breakXOREncryption(int[] encryptedText, int keyLength) {
+    public static String breakXOREncryption(int[] encryptedText, int keyLength) throws NullPointerException {
+        // validate data:
+        if (!Utils.isValid(encryptedText, keyLength)) {
+            return "-1";
+        }
+
         String bestKey = "";
         double bestScore = Double.NEGATIVE_INFINITY;
 

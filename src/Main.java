@@ -6,7 +6,6 @@ public class Main {
         String inputString = "This is a wonder world please make it safe";
         String key = "abc";
 
-
         // Encrypt the text with a string key .
         int[] encryptedDataFromTxt = Encrypt.xorEncrypt(inputString, key);
         System.out.println("Encrypted: " + Arrays.toString(encryptedDataFromTxt));
@@ -16,8 +15,7 @@ public class Main {
         String decryptedDataFromIntArray = Encrypt.xorDecrypt(encryptedDataFromTxt, key);
         System.out.println("Decrypted: " + decryptedDataFromIntArray);
 
-
-
+        // Decrypt encrypted numbers array with a key length
         String extractedKey = Encrypt.breakXOREncryption(encryptedDataFromTxt, key.length());
         System.out.println("Extracted key from array and key length: " + extractedKey);
 

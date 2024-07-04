@@ -15,7 +15,7 @@ public class Encrypt {
     public static int[] xorEncrypt(String inputString, String key) {
         int keyLen = key.length();
         return IntStream.range(0, inputString.length())
-                .map(i -> getAsciiFromChar(inputString, i) ^ getAsciiFromChar(key, (i % keyLen)))
+                .map(i -> Utils.getAsciiFromChar(inputString, i) ^ Utils.getAsciiFromChar(key, (i % keyLen)))
                 .toArray();
     }
 
@@ -24,16 +24,13 @@ public class Encrypt {
     public static String xorDecrypt(int[] intputData, String key) {
         int keyLen = key.length();
         return IntStream.range(0, intputData.length)
-                .mapToObj(i -> (char) (intputData[i] ^ getAsciiFromChar(key, i % keyLen)))
+                .mapToObj(i -> (char) (intputData[i] ^ Utils.getAsciiFromChar(key, i % keyLen)))
                 .collect(StringBuilder::new, StringBuilder::append, StringBuilder::append)
                 .toString();
     }
 
 
-    // Extract the ascii code from a character
-    private static int getAsciiFromChar(String text, int index) {
-        return text.charAt(index);
-    }
+
 
 
     // Decrypt integer array data based on the key length...
@@ -44,10 +41,9 @@ public class Encrypt {
         // generate list of keys based on length
         List<String> keys = Utils.generateKeys(keyLength);
 
-        //
+        // decrypt the data array on each key
+        // then, update the score and find the most frequent
         for (String key : keys) {
-            // decrypt the data array on each key
-            // then, update the score and find the most frequent
             String decrypted = xorDecrypt(encryptedText, key);
             double score = Utils.scoreText(decrypted);
             if (score > bestScore) {

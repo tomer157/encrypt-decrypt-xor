@@ -11,12 +11,12 @@ public class Utils {
     public Utils() {
     }
 
-    // extract the ascii-byte representation of a string
+    // extract the ascii-byte representation of a string method
     public static int getAsciiFromChar(String text, int index) {
         return text.charAt(index);
     }
 
-    // function that generate keys based on alpha-numeric basis.
+    // function that generate keys list based on alpha-numeric basis.
     // We will use a statistic approach to fetch the data key.
     public static List<String> generateKeys(int length) {
         List<String> keys = new ArrayList<>();

@@ -41,11 +41,11 @@ public class Encrypt {
     }
 
 
-    // Decrypt integer array data based on the key length...
-    public static String breakXOREncryption(int[] encryptedText, int keyLength) throws NullPointerException {
+    // Decrypt integer array data based on the key length and extract the key...
+    public static String[] breakXOREncryption(int[] encryptedText, int keyLength) throws NullPointerException {
         // validate data:
         if (!Utils.isValid(encryptedText, keyLength)) {
-            return "-1";
+            return new String[]{"-1"};
         }
 
         String bestKey = "";
@@ -66,7 +66,8 @@ public class Encrypt {
         }
 
         // lastly return the  class regular-decrypt method  string with the highest score key
-        return xorDecrypt(encryptedText, bestKey);
+        // return the original string and encryption key in an array
+        return new String[]{xorDecrypt(encryptedText, bestKey), bestKey};
     }
 
 

@@ -36,7 +36,7 @@ public class Utils {
                 return false;
             }
         } else if (key instanceof String) {
-            if(((String) key).isEmpty()) {
+            if (((String) key).isEmpty()) {
                 return false;
             }
         }
@@ -44,7 +44,7 @@ public class Utils {
 
         if (input instanceof String) {
             String inputString = (String) input;
-            if(inputString.isEmpty()) {
+            if (inputString.isEmpty()) {
                 return false;
             }
             return !(inputString.isEmpty());

@@ -22,3 +22,5 @@ This project demonstrates  XOR encryption and decryption using Java. It includes
    java -cp out Main
 
 
+## Running the code not from the cli
+1. Please run main method from Main class

@@ -19,7 +19,7 @@ public class Main {
         String decryptedDataFromIntArray = Encrypt.xorDecrypt(encryptedDataFromTxt, key);
         System.out.println("Decrypted: " + decryptedDataFromIntArray);
 
-        // Decrypt encrypted numbers array with a key length
+        // Decrypt encrypted numbers array with a key length ->  return array with the re-decrypted text and the key text.
         String[] extractedKeys = Encrypt.breakXOREncryption(encryptedDataFromTxt, key.length());
         System.out.println("Decrypt by key length to original string: " + Arrays.asList(extractedKeys));
 

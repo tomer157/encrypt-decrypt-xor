@@ -27,7 +27,7 @@ public class Utils {
         return keys;
     }
 
-    // validate input data generically :))
+    // validate input data generically
     public static <T> boolean isValid(T input, T key) {
         if (key == null) {
             return false;

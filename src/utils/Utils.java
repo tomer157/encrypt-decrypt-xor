@@ -5,9 +5,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+// all middlware and utilities logic
 public class Utils {
 
-    // Utilities data methods
+    final static char[] ALPHA_NUM_CHARS = "abcdefghijklmnopqrstuvwxyz0123456789".toCharArray();
+
     public Utils() {
     }
 
@@ -20,7 +22,7 @@ public class Utils {
     // We will use a statistic approach to fetch the data key.
     public static List<String> generateKeys(int length) {
         List<String> keys = new ArrayList<>();
-        char[] chars = "abcdefghijklmnopqrstuvwxyz0123456789".toCharArray();
+        char[] chars = ALPHA_NUM_CHARS;
         generateKeysHelper("", length, chars, keys);
         return keys;
     }
@@ -33,11 +35,18 @@ public class Utils {
             if (((Integer) key).intValue() == 0) {
                 return false;
             }
+        } else if (key instanceof String) {
+            if(((String) key).isEmpty()) {
+                return false;
+            }
         }
 
 
         if (input instanceof String) {
             String inputString = (String) input;
+            if(inputString.isEmpty()) {
+                return false;
+            }
             return !(inputString.isEmpty());
         } else if (input instanceof int[]) {
             int[] inputArray = (int[]) input;

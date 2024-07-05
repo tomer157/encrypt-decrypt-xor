@@ -1,13 +1,16 @@
 package encryption;
+
 import utils.Utils;
+
 import java.util.*;
 import java.util.stream.IntStream;
 
-
+// class that holds the encryption and decryption login
 public class Encrypt {
 
     public Encrypt() {
     }
+
 
     // Encryption function with a text and a key
     public static int[] xorEncrypt(String inputString, String key) throws NullPointerException {
@@ -23,7 +26,7 @@ public class Encrypt {
     }
 
 
-    // This method decrypt array of numbers and a key to a text
+    // This method decrypt array of numbers with the  key to a text
     public static String xorDecrypt(int[] intputData, String key) throws NullPointerException {
         // validate data:
         if (!Utils.isValid(intputData, key)) {
